@@ -70,20 +70,18 @@
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4">
+        <a href="/pages/routines" class="bg-white text-black px-10 py-5 rounded-btn font-black heading-font text-lg hover:bg-gray-200 transition-colors">
+          FIND YOUR ROUTINE
+        </a>
         {% assign cta_blocks = section.blocks | where: 'type', 'cta' %}
-        {% for block in cta_blocks limit:2 %}
-          <a href="{{ block.settings.link | default: '#' }}"
-             class="bg-white text-black px-10 py-5 rounded-btn font-black heading-font text-lg hover:bg-gray-200 transition-colors">
-            {{ block.settings.label }}
-          </a>
-        {% endfor %}
-        {% if cta_blocks.size < 2 %}
-          {% for i in (cta_blocks.size..1) %}
-            <a href="#" class="bg-white text-black px-10 py-5 rounded-btn font-black heading-font text-lg hover:bg-gray-200 transition-colors opacity-50 cursor-not-allowed">
-              Button
+        {% for block in cta_blocks %}
+          {% if block.settings.label != blank %}
+            <a href="{{ block.settings.link | default: '#' }}"
+               class="bg-white text-black px-10 py-5 rounded-btn font-black heading-font text-lg hover:bg-gray-200 transition-colors">
+              {{ block.settings.label }}
             </a>
-          {% endfor %}
-        {% endif %}
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
 

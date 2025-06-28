@@ -8,10 +8,10 @@
  * ------------------------------------------------------------
  */
 {
+  "name": "Routines Page",
   "sections": {
     "main": {
-      "type": "page",
-      "settings": {}
+      "type": "routines-grid"
     }
   },
   "order": [
