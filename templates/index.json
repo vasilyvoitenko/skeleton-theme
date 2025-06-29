@@ -15,7 +15,7 @@
         "cta_CewT3R": {
           "type": "cta",
           "settings": {
-            "label": "FIND YOUR ROUTINE",
+            "label": "Najdi svou rutinu",
             "link": "shopify://pages/routines"
           }
         }
@@ -27,8 +27,8 @@
       "settings": {
         "title_left": "LOOKS",
         "title_right": "MAX",
-        "subtitle": "PURIFY. BALANCE. GLOW.",
-        "description": "No bullshit skincare that actually works. From budget essentials to premium weapons. Build your arsenal.",
+        "subtitle": "Tvá minimální péče – maximální efekt",
+        "description": "Vybrali jsme za tebe jen to, co opravdu funguje. \nŽádný balast, žádné zbytečné řeči — jen ověřená pánská péče.\nVezmi kusově, nebo rovnou hotový set a máš vystaráno.",
         "hero_image": "shopify://shop_images/ChatGPT_Image_11_._2025_._08_36_56_eb1d81bb-aaa7-4a3a-b2aa-b52d55850d94.png"
       }
     },

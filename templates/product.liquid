@@ -22,7 +22,7 @@
         <!-- Main Image -->
         <div class="aspect-square rounded-xl overflow-hidden" style="background: linear-gradient(135deg, #2a2a4a 0%, #3a3a5a 100%);">
           {% if product.featured_image %}
-            <img id="main-product-image" src="https://hatchcanvas.com/_/assets/ab_jSsrUAYC8lj-bzTZDqsvu/keys//{{ product.featured_image | img_url: '800x800' }}" alt="{{ product.title }}" class="w-full h-full object-contain">
+            <img id="main-product-image" src="{{ product.featured_image | img_url: '800x800' }}" alt="{{ product.title }}" class="w-full h-full object-contain">
           {% else %}
             <div class="w-full h-full flex items-center justify-center">
               <svg class="w-32 h-32 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
@@ -37,7 +37,7 @@
           <div class="grid grid-cols-4 gap-4">
             {% for image in product.images limit: 4 %}
               <button onclick="changeMainImage('{{ image | img_url: '800x800' }}')" class="aspect-square rounded-lg overflow-hidden border-2 border-transparent hover:border-purple-500 transition-colors" style="background: linear-gradient(135deg, #2a2a4a 0%, #3a3a5a 100%);">
-                <img src="https://hatchcanvas.com/_/assets/ab_jSsrUAYC8lj-bzTZDqsvu/keys//{{ image | img_url: '200x200' }}" alt="{{ product.title }}" class="w-full h-full object-contain">
+                <img src="{{ image | img_url: '200x200' }}" alt="{{ product.title }}" class="w-full h-full object-contain">
               </button>
             {% endfor %}
           </div>
