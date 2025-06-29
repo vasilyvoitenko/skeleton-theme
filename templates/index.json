@@ -12,23 +12,15 @@
     "hero_cA9KDQ": {
       "type": "hero",
       "blocks": {
-        "cta_LFCfyw": {
-          "type": "cta",
-          "settings": {
-            "label": "SHOP ALL PRODUCTS",
-            "link": "/"
-          }
-        },
         "cta_CewT3R": {
           "type": "cta",
           "settings": {
             "label": "FIND YOUR ROUTINE",
-            "link": "/"
+            "link": "shopify://pages/routines"
           }
         }
       },
       "block_order": [
-        "cta_LFCfyw",
         "cta_CewT3R"
       ],
       "name": "Hero banner",

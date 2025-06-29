@@ -11,12 +11,7 @@
   "sections": {
     "main": {
       "type": "routines-grid",
-      "custom_css": [
-        "h2 {font-size: 50px;}"
-      ],
-      "settings": {
-        "title": "{{ page.title }}"
-      }
+      "settings": {}
     }
   },
   "order": [

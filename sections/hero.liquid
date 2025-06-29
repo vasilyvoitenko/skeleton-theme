@@ -70,9 +70,6 @@
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4">
-        <a href="/pages/routines" class="bg-white text-black px-10 py-5 rounded-btn font-black heading-font text-lg hover:bg-gray-200 transition-colors">
-          FIND YOUR ROUTINE
-        </a>
         {% assign cta_blocks = section.blocks | where: 'type', 'cta' %}
         {% for block in cta_blocks %}
           {% if block.settings.label != blank %}
