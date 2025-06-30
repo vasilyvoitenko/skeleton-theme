@@ -1,10 +1,10 @@
 // Looks Max Store - Complete JavaScript Functionality
 
-console.log('[LM] Скрипт looks-max-scripts.js загружен');
+console.log('[LM] looks-max-scripts.js loaded');
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('[LM] DOMContentLoaded старт');
+    console.log('[LM] DOMContentLoaded start');
     // Initialize all functionality
     initAddToCart();
     initSmoothScrolling();
@@ -13,17 +13,17 @@ document.addEventListener('DOMContentLoaded', function() {
     initCartCounter();
     // initProductHovers();
     // initLazyLoading();
-    console.log('[LM] Перед вызовом createMiniCart');
+    console.log('[LM] Before calling createMiniCart');
     if (typeof createMiniCart === 'function') {
-      console.log('[LM] createMiniCart определена, вызываю...');
+      console.log('[LM] createMiniCart is defined, calling...');
     } else {
-      console.log('[LM] createMiniCart НЕ определена');
+      console.log('[LM] createMiniCart is NOT defined');
     }
     createMiniCart();
-    console.log('[LM] После вызова createMiniCart');
+    console.log('[LM] After calling createMiniCart');
 });
 
-console.log('[LM] После объявления DOMContentLoaded');
+console.log('[LM] After DOMContentLoaded declaration');
 
 // Add to Cart Functionality with real Shopify integration
 function initAddToCart() {
@@ -39,7 +39,7 @@ function initAddToCart() {
             btn.className = btn.className.replace('bg-white text-black', 'bg-yellow-500 text-white');
             btn.disabled = true;
             const variantId = form.querySelector('input[name="id"]').value;
-            // Для карточек: количество может быть в qty-input или hidden-qty-input
+            // For product cards: quantity can be in qty-input or hidden-qty-input
             let quantity = 1;
             const qtyInput = form.closest('.product-card')?.querySelector('.qty-input') || form.querySelector('.qty-input') || form.querySelector('input[name="quantity"]');
             if (qtyInput) quantity = parseInt(qtyInput.value) || 1;
@@ -136,7 +136,7 @@ function initSmoothScrolling() {
 }
 
 function createMiniCart() {
-  console.log('[LM] Вошли в функцию createMiniCart');
+  console.log('[LM] Entered createMiniCart function');
   if (!document.getElementById('mini-cart-btn')) {
     const btn = document.createElement('button');
     btn.id = 'mini-cart-btn';
@@ -160,25 +160,25 @@ function createMiniCart() {
     btn.innerHTML = '<svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l-1 12H6L5 9z"/></svg><span id="mini-cart-count" style="font-size:14px; margin-top:2px;">0</span>';
     btn.onclick = showMiniCartModal;
     document.body.appendChild(btn);
-    console.log('[LM] Кнопка мини-корзины добавлена в DOM');
+    console.log('[LM] Mini-cart button added to DOM');
   } else {
-    console.log('[LM] Кнопка мини-корзины уже есть в DOM');
+    console.log('[LM] Mini-cart button already exists in DOM');
   }
   updateMiniCart();
 }
 
 function updateMiniCart() {
-  console.log('[LM] Вошли в функцию updateMiniCart');
+  console.log('[LM] Entered updateMiniCart function');
   fetch('/cart.js')
     .then(res => res.json())
     .then(cart => {
       document.getElementById('mini-cart-count').textContent = cart.item_count;
-      console.log('[LM] Мини-корзина обновлена, товаров:', cart.item_count);
+      console.log('[LM] Mini-cart updated, items:', cart.item_count);
     });
 }
 
 function showMiniCartModal() {
-  console.log('[LM] Вошли в функцию showMiniCartModal');
+  console.log('[LM] Entered showMiniCartModal function');
   fetch('/cart.js')
     .then(res => res.json())
     .then(cart => {
@@ -201,7 +201,7 @@ function showMiniCartModal() {
         modal.style.overflowY = 'auto';
         modal.innerHTML = '';
         document.body.appendChild(modal);
-        console.log('[LM] Модальное окно мини-корзины добавлено в DOM');
+        console.log('[LM] Mini-cart modal added to DOM');
       }
       let html = `<h3 style="font-size:1.3rem; font-weight:900; margin-bottom:1rem;">Váš košík</h3>`;
       if (cart.items.length === 0) {
@@ -219,7 +219,7 @@ function showMiniCartModal() {
         });
         html += '</ul>';
         html += `<div style="margin-top:1rem; font-weight:900; font-size:1.1em;">Celkem: ${(cart.total_price/100).toFixed(2)} €</div>`;
-        html += `<button id="mini-cart-clear-btn" style="margin-top:1rem; width:100%; background:transparent; color:#f87171; border:2px solid #f87171; font-weight:900; font-size:1em; border-radius:8px; padding:0.7em 0; cursor:pointer; transition:background 0.2s, color 0.2s; margin-bottom:0.5rem;">🗑️ Очистить корзину</button>`;
+        html += `<button id="mini-cart-clear-btn" style="margin-top:1rem; width:100%; background:transparent; color:#f87171; border:2px solid #f87171; font-weight:900; font-size:1em; border-radius:8px; padding:0.7em 0; cursor:pointer; transition:background 0.2s, color 0.2s; margin-bottom:0.5rem;">🗑️ Vyprázdnit košík</button>`;
         html += `<button id="mini-cart-checkout-btn" style="margin-top:1.5rem; width:100%; background:#fff; color:#18182f; font-weight:900; font-size:1.1em; border:none; border-radius:8px; padding:0.8em 0; cursor:pointer;">Pokračovat</button>`;
       }
       html += `<button onclick="document.getElementById('mini-cart-modal').remove()" style="position:absolute; top:0.5em; right:0.7em; background:none; border:none; color:#fff; font-size:1.5em; cursor:pointer;">&times;</button>`;

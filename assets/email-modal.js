@@ -25,20 +25,19 @@
     var email = document.getElementById('fake-checkout-email').value;
     var messageDiv = document.getElementById('fake-checkout-message');
     messageDiv.style.display = 'none';
-    // Отправляем email в Shopify Customers через /contact
+    var formData = new FormData();
+    formData.append('form_type', 'customer');
+    formData.append('contact[email]', email);
     fetch('/contact', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: 'form_type=customer&contact[email]=' + encodeURIComponent(email)
+      body: formData
     })
     .then(res => res.text())
     .then(text => {
-      // Проверяем успешность по тексту ответа
       if (text.includes('Thank you') || text.includes('Děkujeme')) {
         messageDiv.textContent = 'Děkujeme! Očekávejte naši odpověď.';
         messageDiv.style.color = '#22c55e';
         messageDiv.style.display = 'block';
-        // GA4 event
         if (typeof window.gtag === 'function') {
           window.gtag('event', 'newsletter_signup', { event_category: 'newsletter', event_label: 'Modal signup' });
         }

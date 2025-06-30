@@ -66,7 +66,7 @@
             {{ 'footer.newsletter_button' | t }}
           </button>
           {% if form.posted_successfully? %}
-            <div class="mt-4 text-green-400 font-bold text-center">Děkujeme za přihlášení! Sledujte svou schránku.</div>
+            <div class="mt-4 text-green-500 font-bold text-center">Děkujeme za přihlášení! Sledujte svou schránku.</div>
           {% elsif form.errors %}
             <div class="mt-4 text-red-400 font-bold text-center">Chyba: {{ form.errors | join: ', ' }}</div>
           {% endif %}
