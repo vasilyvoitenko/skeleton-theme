@@ -65,6 +65,11 @@
           <button type="submit" class="w-full bg-purple-600 text-white py-3 font-black transition-colors hover:bg-purple-500 mt-4" style="font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 6px;">
             {{ 'footer.newsletter_button' | t }}
           </button>
+          {% if form.posted_successfully? %}
+            <div class="mt-4 text-green-400 font-bold text-center">Děkujeme za přihlášení! Sledujte svou schránku.</div>
+          {% elsif form.errors %}
+            <div class="mt-4 text-red-400 font-bold text-center">Chyba: {{ form.errors | join: ', ' }}</div>
+          {% endif %}
         {% endform %}
       </div>
     </div>

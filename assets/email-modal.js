@@ -22,13 +22,42 @@
 
   document.getElementById('fake-checkout-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    document.getElementById('fake-checkout-message').style.display = 'block';
-    // Здесь можно отправить email на сервер или в Google Sheets через webhook
-    setTimeout(function() {
-      document.getElementById('fake-checkout-modal').style.display = 'none';
-      document.getElementById('fake-checkout-message').style.display = 'none';
-      document.getElementById('fake-checkout-email').value = '';
-    }, 3000);
+    var email = document.getElementById('fake-checkout-email').value;
+    var messageDiv = document.getElementById('fake-checkout-message');
+    messageDiv.style.display = 'none';
+    // Отправляем email в Shopify Customers через /contact
+    fetch('/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'form_type=customer&contact[email]=' + encodeURIComponent(email)
+    })
+    .then(res => res.text())
+    .then(text => {
+      // Проверяем успешность по тексту ответа
+      if (text.includes('Thank you') || text.includes('Děkujeme')) {
+        messageDiv.textContent = 'Děkujeme! Očekávejte naši odpověď.';
+        messageDiv.style.color = '#22c55e';
+        messageDiv.style.display = 'block';
+        // GA4 event
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'newsletter_signup', { event_category: 'newsletter', event_label: 'Modal signup' });
+        }
+        setTimeout(function() {
+          document.getElementById('fake-checkout-modal').style.display = 'none';
+          messageDiv.style.display = 'none';
+          document.getElementById('fake-checkout-email').value = '';
+        }, 3000);
+      } else {
+        messageDiv.textContent = 'Chyba: Email se nepodařilo uložit. Zkuste to prosím znovu.';
+        messageDiv.style.color = '#ef4444';
+        messageDiv.style.display = 'block';
+      }
+    })
+    .catch(() => {
+      messageDiv.textContent = 'Chyba: Email se nepodařilo uložit. Zkuste to prosím znovu.';
+      messageDiv.style.color = '#ef4444';
+      messageDiv.style.display = 'block';
+    });
   });
 
   document.getElementById('fake-checkout-close').addEventListener('click', function() {
