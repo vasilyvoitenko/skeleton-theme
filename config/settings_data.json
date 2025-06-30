@@ -20,7 +20,11 @@
           "show_search": false,
           "show_language_selector": true,
           "background_color": "#0a0a1a",
-          "text_color": "#ffffff"
+          "text_color": "#ffffff",
+          "burger_icon_svg": "<!-- -->",
+          "burger_icon": "default",
+          "burger_style": "none",
+          "mobile_menu_style": "none"
         }
       },
       "footer": {
@@ -71,9 +75,9 @@
         "disabled": true,
         "settings": {}
       },
-      "pagefly-page-builder": {
-        "type": "shopify://apps/pagefly-page-builder/blocks/app-embed/83e179f7-59a0-4589-8c66-c0dddf959200",
-        "disabled": true,
+      "2450789086036107872": {
+        "type": "shopify://apps/wixpa-ga4/blocks/star_rating/c2e14746-d691-44e9-a249-a159be386c1b",
+        "disabled": false,
         "settings": {}
       }
     }

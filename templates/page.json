@@ -21,12 +21,6 @@
     },
     "custom_section_nWWEx6": {
       "type": "custom-section",
-      "blocks": {
-        
-      },
-      "block_order": [
-        
-      ],
       "name": "t:general.custom_section",
       "settings": {}
     }

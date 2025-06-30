@@ -317,27 +317,3 @@ function buyNow() {
 
 // Email modal for fake checkout
 </script>
-<div id="fake-checkout-modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); align-items:center; justify-content:center;">
-  <form id="fake-checkout-form" style="background:#fff; padding:2rem; border-radius:1rem; max-width:400px; margin:auto; text-align:center;">
-    <h2>Введите ваш email</h2>
-    <input type="email" id="fake-checkout-email" required placeholder="Email" style="margin:1rem 0; padding:0.5rem; width:90%;">
-    <button type="submit" style="padding:0.5rem 2rem;">Отправить</button>
-    <div id="fake-checkout-message" style="margin-top:1rem; color:green; display:none;">Ожидайте, мы с вами свяжемся!</div>
-  </form>
-</div>
-<script>
-function showEmailForm() {
-  document.getElementById('fake-checkout-modal').style.display = 'flex';
-}
-window.showEmailForm = showEmailForm;
-document.getElementById('fake-checkout-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  document.getElementById('fake-checkout-message').style.display = 'block';
-  // Здесь можно отправить email на сервер или в Google Sheets через webhook
-  setTimeout(function() {
-    document.getElementById('fake-checkout-modal').style.display = 'none';
-    document.getElementById('fake-checkout-message').style.display = 'none';
-    document.getElementById('fake-checkout-email').value = '';
-  }, 3000);
-});
-</script>
