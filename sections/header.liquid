@@ -8,14 +8,14 @@
           {% if section.settings.logo != blank %}
             <!-- Custom Logo -->
             <a href="{{ routes.root_url }}" class="flex items-center">
-              <img src="{{ section.settings.logo | img_url: '200x' }}" alt="{{ section.settings.brand_name | default: shop.name }}" class="h-12 w-auto">
+              <img src="{{ section.settings.logo | img_url: '200x' }}" alt="{{ section.settings.brand_name | default: shop.name }}" style="width:48px; height:48px; object-fit:cover; border-radius:50%;" class="h-12 w-auto rounded-full">
             </a>
           {% else %}
             <!-- Default Logo -->
-            <div style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%); border-radius: 12px; padding: 4px;">
-              <div style="background: linear-gradient(135deg, #1a1a3a 0%, #2a2a4a 100%); border-radius: 8px; padding: 8px;">
+            <div style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%); border-radius: 50%; padding: 4px; width:48px; height:48px; display:flex; align-items:center; justify-content:center;">
+              <div style="background: linear-gradient(135deg, #1a1a3a 0%, #2a2a4a 100%); border-radius: 50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center;">
                 <a href="{{ routes.root_url }}">
-                  <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24" style="border-radius:50%;">
                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                   </svg>
                 </a>
