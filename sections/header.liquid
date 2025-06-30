@@ -48,11 +48,15 @@
           <button class="p-2 text-gray-400 hover:text-white transition-colors" onclick="toggleSearch()">{{ 'header.search' | t }}</button>
         {% endif %}
         
-        <!-- Mobile Menu Button -->
-        <button class="md:hidden p-2 text-gray-400 hover:text-white transition-colors" onclick="toggleMobileMenu()">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
+        <!-- Mobile Menu Button (customizable) -->
+        <button class="md:hidden p-2 text-gray-400 hover:text-white transition-colors" onclick="toggleMobileMenu()" style="{{ section.settings.burger_style }}">
+          {% if section.settings.burger_icon == 'default' %}
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          {% else %}
+            {{ section.settings.burger_icon_svg | raw }}
+          {% endif %}
         </button>
         
         <!-- Language Selector -->
@@ -76,8 +80,8 @@
       </div>
     </div>
     
-    <!-- Mobile Menu (Hidden by default) -->
-    <div id="mobile-menu" class="md:hidden hidden border-t border-purple-900 py-4">
+    <!-- Mobile Menu (Hidden by default, customizable) -->
+    <div id="mobile-menu" class="md:hidden hidden border-t border-purple-900 py-4" style="{{ section.settings.mobile_menu_style }}">
       <div class="space-y-4">
         {% for link in section.settings.menu.links %}
           <a href="{{ link.url }}" class="block text-gray-300 hover:text-white transition-colors font-semibold" style="font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.05em;">{{ link.title }}</a>
@@ -152,6 +156,34 @@ function toggleSearch() {
       "id": "text_color",
       "label": "Text Color",
       "default": "#ffffff"
+    },
+    {
+      "type": "textarea",
+      "id": "burger_icon_svg",
+      "label": "Custom Burger Icon SVG (optional)",
+      "default": "<!-- -->"
+    },
+    {
+      "type": "select",
+      "id": "burger_icon",
+      "label": "Burger Icon Type",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "custom", "label": "Custom SVG" }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "text",
+      "id": "burger_style",
+      "label": "Burger Button Inline Style",
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "mobile_menu_style",
+      "label": "Mobile Menu Inline Style",
+      "default": "none"
     }
   ],
   "presets": [

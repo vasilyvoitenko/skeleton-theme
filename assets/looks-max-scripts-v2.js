@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
     initAddToCart();
     initSmoothScrolling();
-    initMobileMenu();
+    // initMobileMenu();
     // initSearchFunctionality();
     initCartCounter();
     // initProductHovers();
@@ -133,51 +133,6 @@ function initSmoothScrolling() {
             }
         });
     });
-}
-
-// Mobile Menu Toggle
-function initMobileMenu() {
-    const mobileMenuButton = document.createElement('button');
-    mobileMenuButton.className = 'md:hidden p-2 text-gray-400 hover:text-white transition-colors';
-    mobileMenuButton.innerHTML = `
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-    `;
-    
-    const nav = document.querySelector('nav');
-    const header = document.querySelector('header .flex');
-    
-    if (nav && header) {
-        // Add mobile menu button
-        header.appendChild(mobileMenuButton);
-        
-        // Create mobile menu
-        const mobileMenu = document.createElement('div');
-        mobileMenu.className = 'md:hidden absolute top-full left-0 right-0 bg-gray-900 border-t border-purple-900 hidden';
-        mobileMenu.innerHTML = `
-            <div class="px-4 py-6 space-y-4">
-                <a href="#" class="block text-gray-300 hover:text-white transition-colors font-semibold heading-font">HOME</a>
-                <a href="#" class="block text-gray-300 hover:text-white transition-colors font-semibold heading-font">CATEGORIES</a>
-                <a href="#" class="block text-gray-300 hover:text-white transition-colors font-semibold heading-font">ABOUT</a>
-                <a href="#" class="block text-gray-300 hover:text-white transition-colors font-semibold heading-font">CONTACT</a>
-            </div>
-        `;
-        
-        header.parentNode.appendChild(mobileMenu);
-        
-        // Toggle mobile menu
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!header.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileMenu.classList.add('hidden');
-            }
-        });
-    }
 }
 
 function createMiniCart() {
