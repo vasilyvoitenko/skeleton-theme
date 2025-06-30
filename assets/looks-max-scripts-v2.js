@@ -219,20 +219,42 @@ function showMiniCartModal() {
         });
         html += '</ul>';
         html += `<div style="margin-top:1rem; font-weight:900; font-size:1.1em;">Celkem: ${(cart.total_price/100).toFixed(2)} €</div>`;
+        html += `<button id="mini-cart-clear-btn" style="margin-top:1rem; width:100%; background:transparent; color:#f87171; border:2px solid #f87171; font-weight:900; font-size:1em; border-radius:8px; padding:0.7em 0; cursor:pointer; transition:background 0.2s, color 0.2s; margin-bottom:0.5rem;">🗑️ Очистить корзину</button>`;
         html += `<button id="mini-cart-checkout-btn" style="margin-top:1.5rem; width:100%; background:#fff; color:#18182f; font-weight:900; font-size:1.1em; border:none; border-radius:8px; padding:0.8em 0; cursor:pointer;">Pokračovat</button>`;
       }
       html += `<button onclick="document.getElementById('mini-cart-modal').remove()" style="position:absolute; top:0.5em; right:0.7em; background:none; border:none; color:#fff; font-size:1.5em; cursor:pointer;">&times;</button>`;
       modal.innerHTML = html;
       modal.style.display = 'block';
       document.getElementById('mini-cart-checkout-btn')?.addEventListener('click', function() {
-        console.log('[LM] Клик по кнопке Pokračovat');
+        // GA4 begin_checkout event
+        fetch('/cart.js')
+          .then(res => res.json())
+          .then(cart => {
+            if (typeof window.gtag === 'function') {
+              const items = cart.items.map(item => ({
+                item_id: item.variant_id,
+                item_name: item.product_title,
+                price: item.price / 100,
+                quantity: item.quantity
+              }));
+              window.gtag('event', 'begin_checkout', { items });
+            }
+          });
         document.getElementById('mini-cart-modal').remove();
         if (typeof window.showEmailForm === 'function') {
-          console.log('[LM] showEmailForm определена, вызываю...');
           window.showEmailForm();
-        } else {
-          console.log('[LM] showEmailForm НЕ определена');
         }
+      });
+      document.getElementById('mini-cart-clear-btn')?.addEventListener('click', function() {
+        fetch('/cart/clear.js', { method: 'POST', headers: { 'Accept': 'application/json' } })
+          .then(res => res.json())
+          .then(() => {
+            if (typeof window.updateMiniCart === 'function') window.updateMiniCart();
+            document.getElementById('mini-cart-modal').remove();
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'cart_cleared', { event_category: 'cart', event_label: 'Mini cart cleared' });
+            }
+          });
       });
     });
 }
