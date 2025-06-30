@@ -18,7 +18,6 @@
           "tagline": "Tvá minimální péče – maximální efekt",
           "menu": "main-menu",
           "show_search": false,
-          "show_cart": true,
           "show_language_selector": true,
           "background_color": "#0a0a1a",
           "text_color": "#ffffff"
@@ -47,11 +46,6 @@
     },
     "content_for_index": [],
     "blocks": {
-      "2450789086036107872": {
-        "type": "shopify://apps/wixpa-ga4/blocks/star_rating/c2e14746-d691-44e9-a249-a159be386c1b",
-        "disabled": false,
-        "settings": {}
-      },
       "14060646107696862457": {
         "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
         "disabled": false,
@@ -61,7 +55,28 @@
         "type": "shopify://apps/avada-seo-suite/blocks/avada-seo/15507c6e-1aa3-45d3-b698-7e175e033440",
         "disabled": false,
         "settings": {}
+      },
+      "13694372020385051692": {
+        "type": "shopify://apps/analyzely-google-analytics-4/blocks/analyzely/b3a3a697-6f42-4507-a5ae-c447f6da2c9d",
+        "disabled": false,
+        "settings": {}
+      },
+      "1092553828153919622": {
+        "type": "shopify://apps/analyzely-google-analytics-4/blocks/consent-banner/b3a3a697-6f42-4507-a5ae-c447f6da2c9d",
+        "disabled": false,
+        "settings": {}
+      },
+      "6478312753674380289": {
+        "type": "shopify://apps/gempages-builder/blocks/embed-gp-script-head/20b379d4-1b20-474c-a6ca-665c331919f3",
+        "disabled": true,
+        "settings": {}
+      },
+      "pagefly-page-builder": {
+        "type": "shopify://apps/pagefly-page-builder/blocks/app-embed/83e179f7-59a0-4589-8c66-c0dddf959200",
+        "disabled": true,
+        "settings": {}
       }
     }
-  }
+  },
+  "presets": null
 }

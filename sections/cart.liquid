@@ -10,44 +10,34 @@
 
   {% if cart.item_count == 0 %}
     <div class="bg-gray-900 rounded-xl p-10 text-center text-gray-300 text-xl font-bold shadow-lg">
-      Your cart is empty.
-      <a href="/collections/all" class="ml-2 text-purple-400 underline hover:text-purple-200">Continue shopping</a>
+      {{ 'cart.empty' | t }}
+      <a href="/collections/all" class="ml-2 text-purple-400 underline hover:text-purple-200">{{ 'cart.continue_shopping' | t }}</a>
     </div>
   {% else %}
-    <div class="bg-gray-900 rounded-xl p-10 text-center text-gray-300 text-xl font-bold shadow-lg">
-      Тестовый режим: оформление заказа недоступно.<br>Покупка возможна только через кнопку Buy Now на странице товара.
-    </div>
-    {#
     <form action="{{ routes.cart_url }}" method="post" novalidate>
       <div class="flex flex-col gap-8">
         {% for item in cart.items %}
-          <div class="flex flex-col md:flex-row items-center bg-gray-900 rounded-2xl shadow-lg p-6 gap-6 relative" data-cart-item-key="{{ item.key }}">
-            <div class="flex-shrink-0 w-32 md:w-36 p-2 bg-gray-800 rounded-2xl shadow-lg">
-                <img
-                  src="{{ item.image | img_url: '300x' }}"
-                  alt="{{ item.title }}"
-                  class="w-full h-auto object-contain"
-                >
+          <div class="flex-shrink-0 w-32 md:w-36 p-2 bg-gray-800 rounded-2xl shadow-lg">
+            <img src="{{ item.image | img_url: '300x' }}" alt="{{ item.title }}" class="w-full h-auto object-contain">
+          </div>
+          <div class="flex-1 flex flex-col justify-between min-w-0">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+              <div>
+                <a href="{{ item.url }}" class="text-xl font-black text-white hover:text-purple-400 heading-font">{{ item.product.title }}</a>
+                {% if item.variant.title != 'Default Title' %}
+                  <div class="text-sm text-gray-400 font-semibold mt-1">{{ item.variant.title }}</div>
+                {% endif %}
               </div>
-            <div class="flex-1 flex flex-col justify-between min-w-0">
-              <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                <div>
-                  <a href="{{ item.url }}" class="text-xl font-black text-white hover:text-purple-400 heading-font">{{ item.product.title }}</a>
-                  {% if item.variant.title != 'Default Title' %}
-                    <div class="text-sm text-gray-400 font-semibold mt-1">{{ item.variant.title }}</div>
-                  {% endif %}
-                </div>
-                <div class="cart-line-price text-lg font-black text-purple-300 md:text-right">{{ item.final_line_price | money }}</div>
+              <div class="cart-line-price text-lg font-black text-purple-300 md:text-right">{{ item.final_line_price | money }}</div>
+            </div>
+            <div class="flex items-center gap-4 mt-4">
+              <button type="button" class="cart-remove-btn text-xs text-red-400 hover:text-red-200 font-bold px-3 py-2 rounded transition-colors bg-gray-800">{{ 'cart.remove' | t }}</button>
+              <div class="flex items-center gap-2">
+                <button type="button" class="cart-qty-btn px-3 py-2 bg-gray-800 text-white rounded-l font-black text-lg">-</button>
+                <input type="number" name="updates[{{ item.key }}]" value="{{ item.quantity }}" min="1" class="cart-qty w-16 text-center bg-gray-700 text-white font-black py-2 rounded outline-none" style="border-radius: 6px;" />
+                <button type="button" class="cart-qty-btn px-3 py-2 bg-gray-800 text-white rounded-r font-black text-lg">+</button>
               </div>
-              <div class="flex items-center gap-4 mt-4">
-                <button type="button" class="cart-remove-btn text-xs text-red-400 hover:text-red-200 font-bold px-3 py-2 rounded transition-colors bg-gray-800">{{ 'cart.remove' | t }}</button>
-                <div class="flex items-center gap-2">
-                  <button type="button" class="cart-qty-btn px-3 py-2 bg-gray-800 text-white rounded-l font-black text-lg">-</button>
-                  <input type="number" name="updates[{{ item.key }}]" value="{{ item.quantity }}" min="1" class="cart-qty w-16 text-center bg-gray-700 text-white font-black py-2 rounded outline-none" style="border-radius: 6px;" />
-                  <button type="button" class="cart-qty-btn px-3 py-2 bg-gray-800 text-white rounded-r font-black text-lg">+</button>
-                </div>
-                <span class="cart-line-each text-gray-400 text-sm ml-2">x {{ item.price | money }}</span>
-              </div>
+              <span class="cart-line-each text-gray-400 text-sm ml-2">x {{ item.price | money }}</span>
             </div>
           </div>
         {% endfor %}
@@ -57,7 +47,6 @@
         <button type="submit" name="checkout" class="bg-purple-600 hover:bg-purple-500 text-white font-black text-xl px-10 py-5 rounded-btn heading-font transition-colors shadow-xl mt-4 md:mt-0">{{ 'cart.checkout' | t }}</button>
       </div>
     </form>
-    #}
   {% endif %}
 </section>
 

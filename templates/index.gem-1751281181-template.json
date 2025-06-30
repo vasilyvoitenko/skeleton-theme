@@ -16,7 +16,7 @@
           "type": "cta",
           "settings": {
             "label": "Najdi svou rutinu",
-            "link": "shopify://pages/routines"
+            "link": "shopify:\/\/pages\/routines"
           }
         }
       },
@@ -29,7 +29,7 @@
         "title_right": "MAX",
         "subtitle": "Tvá minimální péče – maximální efekt",
         "description": "Vybrali jsme za tebe jen to, co opravdu funguje. \nŽádný balast, žádné zbytečné řeči — jen ověřená pánská péče.\nVezmi kusově, nebo rovnou hotový set a máš vystaráno.",
-        "hero_image": "shopify://shop_images/ChatGPT_Image_11_._2025_._08_36_56_eb1d81bb-aaa7-4a3a-b2aa-b52d55850d94.png"
+        "hero_image": "shopify:\/\/shop_images\/ChatGPT_Image_11_._2025_._08_36_56_eb1d81bb-aaa7-4a3a-b2aa-b52d55850d94.png"
       }
     },
     "category_products_3cKhnN": {

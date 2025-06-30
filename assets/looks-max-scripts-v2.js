@@ -28,78 +28,65 @@ console.log('[LM] После объявления DOMContentLoaded');
 // Add to Cart Functionality with real Shopify integration
 function initAddToCart() {
     console.log('Initializing add to cart functionality...');
-    document.querySelectorAll('button').forEach(button => {
-        if (button.textContent.includes('ADD TO CART')) {
-            console.log('Found ADD TO CART button:', button);
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Add to cart button clicked');
-                
-                const originalText = this.textContent;
-                const originalClasses = this.className;
-                
-                // Change button state
-                this.textContent = 'ADDING...';
-                this.className = this.className.replace('bg-white text-black', 'bg-yellow-500 text-white');
-                this.disabled = true;
-                
-                // Get product data from the form
-                const form = this.closest('.add-to-cart-form');
-                const variantId = form.querySelector('input[name="id"]').value;
-                const quantityInput = form.closest('.product-card').querySelector('.qty-input');
-                const quantity = quantityInput ? parseInt(quantityInput.value) : 1;
-                
-                console.log('Adding to cart:', { variantId, quantity });
-                
-                // Add to Shopify cart via AJAX
-                fetch('/cart/add.js', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        id: variantId,
-                        quantity: quantity
-                    })
+    document.querySelectorAll('.add-to-cart-form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = form.querySelector('.add-to-cart-btn');
+            if (!btn) return;
+            const originalText = btn.textContent;
+            const originalClasses = btn.className;
+            btn.textContent = 'ADDING...';
+            btn.className = btn.className.replace('bg-white text-black', 'bg-yellow-500 text-white');
+            btn.disabled = true;
+            const variantId = form.querySelector('input[name="id"]').value;
+            // Для карточек: количество может быть в qty-input или hidden-qty-input
+            let quantity = 1;
+            const qtyInput = form.closest('.product-card')?.querySelector('.qty-input') || form.querySelector('.qty-input') || form.querySelector('input[name="quantity"]');
+            if (qtyInput) quantity = parseInt(qtyInput.value) || 1;
+            // Add to Shopify cart via AJAX
+            fetch('/cart/add.js', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id: variantId,
+                    quantity: quantity
                 })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Cart response:', data);
-                    if (data.status) {
-                        // Error occurred
-                        console.error('Error adding to cart:', data.description);
-                        this.textContent = 'ERROR';
-                        this.className = this.className.replace('bg-yellow-500 text-white', 'bg-red-500 text-white');
-                    } else {
-                        // Success
-                        this.textContent = 'ADDED!';
-                        this.className = this.className.replace('bg-yellow-500 text-white', 'bg-green-500 text-white');
-                        
-                        // Update cart counter
-                        updateCartCounter();
-                        
-                        // Show success animation
-                        this.style.transform = 'scale(0.95)';
-                        setTimeout(() => {
-                            this.style.transform = 'scale(1)';
-                        }, 150);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    this.textContent = 'ERROR';
-                    this.className = this.className.replace('bg-yellow-500 text-white', 'bg-red-500 text-white');
-                })
-                .finally(() => {
-                    // Reset button after 2 seconds
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status) {
+                    // Error occurred
+                    console.error('Error adding to cart:', data.description);
+                    btn.textContent = 'ERROR';
+                    btn.className = btn.className.replace('bg-yellow-500 text-white', 'bg-red-500 text-white');
+                } else {
+                    // Success
+                    btn.textContent = 'ADDED!';
+                    btn.className = btn.className.replace('bg-yellow-500 text-white', 'bg-green-500 text-white');
+                    updateCartCounter();
+                    if (typeof window.updateMiniCart === 'function') window.updateMiniCart();
+                    if (typeof window.showMiniCartModal === 'function') window.showMiniCartModal();
+                    btn.style.transform = 'scale(0.95)';
                     setTimeout(() => {
-                        this.textContent = originalText;
-                        this.className = originalClasses;
-                        this.disabled = false;
-                    }, 2000);
-                });
+                        btn.style.transform = 'scale(1)';
+                    }, 150);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                btn.textContent = 'ERROR';
+                btn.className = btn.className.replace('bg-yellow-500 text-white', 'bg-red-500 text-white');
+            })
+            .finally(() => {
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.className = originalClasses;
+                    btn.disabled = false;
+                }, 2000);
             });
-        }
+        });
     });
 }
 

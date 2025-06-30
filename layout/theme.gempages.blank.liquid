@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Page Title -->
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} - {{ current_tags | join: ', ' }}{% endif -%}
+    {%- unless page_title contains shop.name %} - {{ shop.name }}{% endunless -%}
+  </title>
+  
+  <!-- Meta Description -->
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+  
+  <!-- Looks Max Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Your Custom CSS -->
+  {{ 'looks-max-styles.css' | asset_url | stylesheet_tag }}
+  
+  <!-- Shopify Required Content -->
+  {{ content_for_header }}
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="{{ 'favicon.ico' | asset_url }}">
+</head>
+
+<body class="text-white" style="font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2a 50%, #2a1540 100%); min-height: 100vh;"><main>
+    {{ content_for_layout }}
+  </main></body>
+</html>
