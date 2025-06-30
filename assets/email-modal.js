@@ -9,7 +9,7 @@
           <h2 style="font-size:1.4rem; font-weight:900; margin-bottom:1.5rem; color:#18182f;">Zadejte svůj email</h2>
           <input type="email" id="fake-checkout-email" required placeholder="Email" style="margin:1rem 0 1.5rem 0; padding:0.8rem 1rem; width:90%; border:1.5px solid #dadada; border-radius:8px; font-size:1.1rem; color:#18182f; background:#f7f7fa; outline:none; transition:border 0.2s;" onfocus="this.style.borderColor='#7c3aed'" onblur="this.style.borderColor='#dadada'">
           <button type="submit" style="padding:0.7rem 2.5rem; background:#7c3aed; color:#fff; border:none; border-radius:8px; font-weight:900; font-size:1.1rem; letter-spacing:0.03em; margin-top:0.5rem; cursor:pointer; transition:background 0.2s;">Odeslat</button>
-          <div id="fake-checkout-message" style="margin-top:1.5rem; color:#22c55e; display:none; font-weight:700; font-size:1.1rem;">Děkujeme! Očekávejte naši odpověď.</div>
+          <div id="fake-checkout-message" style="margin-top:1.5rem; display:none; font-weight:700; font-size:1.1rem; border-radius:8px; padding:1em; box-shadow:0 2px 12px rgba(124,58,237,0.10); background:#7c3aed; color:#fff; transition:opacity 0.3s; text-align:center;"></div>
         </form>
       </div>
     `;
@@ -24,6 +24,7 @@
     e.preventDefault();
     var email = document.getElementById('fake-checkout-email').value;
     var messageDiv = document.getElementById('fake-checkout-message');
+    messageDiv.style.opacity = 0;
     messageDiv.style.display = 'none';
     var formData = new FormData();
     formData.append('form_type', 'customer');
@@ -36,26 +37,47 @@
     .then(text => {
       if (text.includes('Thank you') || text.includes('Děkujeme')) {
         messageDiv.textContent = 'Děkujeme! Očekávejte naši odpověď.';
-        messageDiv.style.color = '#22c55e';
+        messageDiv.style.background = '#7c3aed';
+        messageDiv.style.color = '#fff';
         messageDiv.style.display = 'block';
+        setTimeout(function(){ messageDiv.style.opacity = 1; }, 10);
         if (typeof window.gtag === 'function') {
           window.gtag('event', 'newsletter_signup', { event_category: 'newsletter', event_label: 'Modal signup' });
         }
         setTimeout(function() {
-          document.getElementById('fake-checkout-modal').style.display = 'none';
-          messageDiv.style.display = 'none';
-          document.getElementById('fake-checkout-email').value = '';
-        }, 3000);
+          messageDiv.style.opacity = 0;
+          setTimeout(function(){
+            messageDiv.style.display = 'none';
+            document.getElementById('fake-checkout-modal').style.display = 'none';
+            document.getElementById('fake-checkout-email').value = '';
+          }, 300);
+        }, 2500);
       } else {
         messageDiv.textContent = 'Chyba: Email se nepodařilo uložit. Zkuste to prosím znovu.';
-        messageDiv.style.color = '#ef4444';
+        messageDiv.style.background = '#ef4444';
+        messageDiv.style.color = '#fff';
         messageDiv.style.display = 'block';
+        setTimeout(function(){ messageDiv.style.opacity = 1; }, 10);
+        setTimeout(function() {
+          messageDiv.style.opacity = 0;
+          setTimeout(function(){
+            messageDiv.style.display = 'none';
+          }, 300);
+        }, 2500);
       }
     })
     .catch(() => {
       messageDiv.textContent = 'Chyba: Email se nepodařilo uložit. Zkuste to prosím znovu.';
-      messageDiv.style.color = '#ef4444';
+      messageDiv.style.background = '#ef4444';
+      messageDiv.style.color = '#fff';
       messageDiv.style.display = 'block';
+      setTimeout(function(){ messageDiv.style.opacity = 1; }, 10);
+      setTimeout(function() {
+        messageDiv.style.opacity = 0;
+        setTimeout(function(){
+          messageDiv.style.display = 'none';
+        }, 300);
+      }, 2500);
     });
   });
 
