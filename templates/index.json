@@ -14,6 +14,7 @@
       "blocks": {
         "cta_CewT3R": {
           "type": "cta",
+          "disabled": true,
           "settings": {
             "label": "Najdi svou rutinu",
             "link": "shopify://pages/routines"
@@ -58,7 +59,7 @@
       "name": "Category Products",
       "settings": {
         "heading": "{{ section.settings.collection.title }}",
-        "description": "Slunce = vrásky. SPF je anti-aging zbraň č. 1, ať je léto nebo leden. Každý den, bro.",
+        "description": "Když nehydratuješ, loupáš se jak croissant. A štětiny pak píchají jak jehly.",
         "collection": "moisturizing-day-night",
         "limit": 3
       }

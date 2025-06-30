@@ -11,15 +11,28 @@
   "sections": {
     "main": {
       "type": "routines-grid",
+      "disabled": true,
       "custom_css": [
         "h2 {font-size: 50px;}"
       ],
       "settings": {
         "title": "{{ page.title }}"
       }
+    },
+    "custom_section_nWWEx6": {
+      "type": "custom-section",
+      "blocks": {
+        
+      },
+      "block_order": [
+        
+      ],
+      "name": "t:general.custom_section",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "custom_section_nWWEx6"
   ]
 }

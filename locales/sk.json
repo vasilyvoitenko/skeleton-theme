@@ -1,0 +1,41 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "404": {
+    "title": "Stránka nenájdená",
+    "not_found": "Ospravedlňujeme sa, ale táto stránka neexistuje.",
+    "back_to_shopping": "Späť do obchodu"
+  },
+  "footer": {
+    "quick_links": "Rýchle odkazy",
+    "stay_updated": "Zostaňte v obraze",
+    "newsletter_text": "Získajte najnovšie tipy na starostlivosť o pleť a exkluzívne ponuky do vašej schránky.",
+    "newsletter_placeholder": "Zadajte svoj email",
+    "newsletter_button": "Odoberať",
+    "copyright": "© 2025 Looks Max. Všetky práva vyhradené."
+  },
+  "product": {
+    "add_to_cart": "Pridať do košíka",
+    "sold_out": "Vypredané",
+    "view_details": "Zobraziť detaily",
+    "quantity": "Množstvo",
+    "buy_now": "Kúpiť teraz",
+    "fast_shipping": "Rýchle doručenie"
+  },
+  "cart": {
+    "remove": "Odstrániť",
+    "subtotal": "Medzisúčet",
+    "checkout": "Pokračovať k platbe"
+  },
+  "header": {
+    "tagline": "Tvoja minimálna starostlivosť – maximálny efekt",
+    "search": "Hľadať"
+  }
+}
