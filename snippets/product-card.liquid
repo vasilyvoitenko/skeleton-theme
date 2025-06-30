@@ -59,12 +59,12 @@
       <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
       <input type="hidden" name="quantity" value="1" class="hidden-qty-input">
       {% if product.available %}
-        <button type="submit" class="w-full bg-white text-black py-4 font-black text-lg hover:bg-gray-200 transition-colors mb-2 add-to-cart-btn rounded-btn heading-font" style="text-transform: uppercase; letter-spacing: 0.05em;">ADD TO CART</button>
+        <button type="submit" class="w-full bg-white text-black py-4 font-black text-lg hover:bg-gray-200 transition-colors mb-2 add-to-cart-btn rounded-btn heading-font" style="text-transform: uppercase; letter-spacing: 0.05em;">{{ 'product.add_to_cart' | t }}</button>
       {% else %}
-        <button type="button" disabled class="w-full bg-gray-600 text-white py-4 font-black text-lg cursor-not-allowed rounded-btn heading-font" style="text-transform: uppercase; letter-spacing: 0.05em;">SOLD OUT</button>
+        <button type="button" disabled class="w-full bg-gray-600 text-white py-4 font-black text-lg cursor-not-allowed rounded-btn heading-font" style="text-transform: uppercase; letter-spacing: 0.05em;">{{ 'product.sold_out' | t }}</button>
       {% endif %}
     </form>
-    <a href="{{ product.url }}" class="block text-center text-purple-300 hover:text-white transition-colors font-semibold heading-font mt-2" style="text-transform: uppercase; letter-spacing: 0.05em;">VIEW DETAILS</a>
+    <a href="{{ product.url }}" class="block text-center text-purple-300 hover:text-white transition-colors font-semibold heading-font mt-2" style="text-transform: uppercase; letter-spacing: 0.05em;">{{ 'product.view_details' | t }}</a>
   </div>
   <style>
     input[type="number"].qty-input::-webkit-inner-spin-button,

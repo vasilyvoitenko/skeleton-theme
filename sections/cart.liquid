@@ -14,6 +14,10 @@
       <a href="/collections/all" class="ml-2 text-purple-400 underline hover:text-purple-200">Continue shopping</a>
     </div>
   {% else %}
+    <div class="bg-gray-900 rounded-xl p-10 text-center text-gray-300 text-xl font-bold shadow-lg">
+      Тестовый режим: оформление заказа недоступно.<br>Покупка возможна только через кнопку Buy Now на странице товара.
+    </div>
+    {#
     <form action="{{ routes.cart_url }}" method="post" novalidate>
       <div class="flex flex-col gap-8">
         {% for item in cart.items %}
@@ -36,7 +40,7 @@
                 <div class="cart-line-price text-lg font-black text-purple-300 md:text-right">{{ item.final_line_price | money }}</div>
               </div>
               <div class="flex items-center gap-4 mt-4">
-                <button type="button" class="cart-remove-btn text-xs text-red-400 hover:text-red-200 font-bold px-3 py-2 rounded transition-colors bg-gray-800">Remove</button>
+                <button type="button" class="cart-remove-btn text-xs text-red-400 hover:text-red-200 font-bold px-3 py-2 rounded transition-colors bg-gray-800">{{ 'cart.remove' | t }}</button>
                 <div class="flex items-center gap-2">
                   <button type="button" class="cart-qty-btn px-3 py-2 bg-gray-800 text-white rounded-l font-black text-lg">-</button>
                   <input type="number" name="updates[{{ item.key }}]" value="{{ item.quantity }}" min="1" class="cart-qty w-16 text-center bg-gray-700 text-white font-black py-2 rounded outline-none" style="border-radius: 6px;" />
@@ -49,10 +53,11 @@
         {% endfor %}
       </div>
       <div class="flex flex-col md:flex-row justify-between items-center mt-12 gap-6">
-        <div class="text-2xl font-black text-white heading-font">Subtotal: <span class="cart-subtotal text-purple-400">{{ cart.total_price | money }}</span></div>
-        <button type="submit" name="checkout" class="bg-purple-600 hover:bg-purple-500 text-white font-black text-xl px-10 py-5 rounded-btn heading-font transition-colors shadow-xl mt-4 md:mt-0">Checkout</button>
+        <div class="text-2xl font-black text-white heading-font">{{ 'cart.subtotal' | t }}: <span class="cart-subtotal text-purple-400">{{ cart.total_price | money }}</span></div>
+        <button type="submit" name="checkout" class="bg-purple-600 hover:bg-purple-500 text-white font-black text-xl px-10 py-5 rounded-btn heading-font transition-colors shadow-xl mt-4 md:mt-0">{{ 'cart.checkout' | t }}</button>
       </div>
     </form>
+    #}
   {% endif %}
 </section>
 

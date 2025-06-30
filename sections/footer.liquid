@@ -48,21 +48,7 @@
       
       <!-- Quick Links -->
       <div>
-        <h4 class="text-lg font-black text-white mb-6" style="font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.05em;">
-          {{ section.settings.quick_links_heading }}
-        </h4>
-        <ul class="space-y-3">
-          {% for link in section.settings.quick_links.links %}
-            <li><a href="{{ link.url }}" class="text-gray-300 hover:text-white transition-colors font-semibold">{{ link.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-      
-      <!-- Customer Service -->
-      <div>
-        <h4 class="text-lg font-black text-white mb-6" style="font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.05em;">
-          {{ section.settings.customer_links_heading }}
-        </h4>
+        <h4 class="text-lg font-black text-white mb-6" style="font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.05em;">{{ 'footer.quick_links' | t }}</h4>
         <ul class="space-y-3">
           {% for link in section.settings.customer_links.links %}
             <li><a href="{{ link.url }}" class="text-gray-300 hover:text-white transition-colors font-semibold">{{ link.title }}</a></li>
@@ -72,16 +58,12 @@
       
       <!-- Newsletter -->
       <div>
-        <h4 class="text-lg font-black text-white mb-6" style="font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.05em;">
-          {{ section.settings.newsletter_heading }}
-        </h4>
-        <p class="text-gray-300 mb-6 font-semibold">
-          {{ section.settings.newsletter_text }}
-        </p>
+        <h4 class="text-lg font-black text-white mb-6" style="font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.05em;">{{ 'footer.stay_updated' | t }}</h4>
+        <p class="text-gray-300 mb-6 font-semibold">{{ 'footer.newsletter_text' | t }}</p>
         {% form 'customer', id: 'newsletter-form' %}
-          <input type="email" name="contact[email]" placeholder="Enter your email" required class="w-full bg-gray-700 text-white px-4 py-3 placeholder-gray-400 border border-purple-600 focus:border-purple-400 outline-none" style="border-radius: 6px;">
+          <input type="email" name="contact[email]" placeholder="{{ 'footer.newsletter_placeholder' | t }}" required class="w-full bg-gray-700 text-white px-4 py-3 placeholder-gray-400 border border-purple-600 focus:border-purple-400 outline-none" style="border-radius: 6px;">
           <button type="submit" class="w-full bg-purple-600 text-white py-3 font-black transition-colors hover:bg-purple-500 mt-4" style="font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 6px;">
-            {{ section.settings.newsletter_button_text }}
+            {{ 'footer.newsletter_button' | t }}
           </button>
         {% endform %}
       </div>

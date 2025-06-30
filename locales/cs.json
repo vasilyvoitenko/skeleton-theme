@@ -1,0 +1,31 @@
+{
+  "footer": {
+    "quick_links": "Rychlé odkazy",
+    "stay_updated": "Zůstaňte v obraze",
+    "newsletter_text": "Získejte nejnovější tipy na péči o pleť a exkluzivní nabídky do vaší schránky.",
+    "newsletter_placeholder": "Zadejte svůj email",
+    "newsletter_button": "Odebírat",
+    "copyright": "© 2025 Looks Max. Všechna práva vyhrazena."
+  },
+  "product": {
+    "add_to_cart": "Přidat do košíku",
+    "sold_out": "Vyprodáno",
+    "view_details": "Zobrazit detaily",
+    "quantity": "Množství",
+    "buy_now": "Koupit nyní",
+    "authentic": "Originál",
+    "fast_shipping": "Rychlé doručení",
+    "guarantee": "Záruka",
+    "support": "Podpora"
+  },
+  "cart": {
+    "remove": "Odstranit",
+    "subtotal": "Mezisoučet",
+    "checkout": "Pokračovat k platbě"
+  },
+  "header": {
+    "brand_name": "LOOKS MAX",
+    "tagline": "Tvoje minimální péče – maximální efekt",
+    "search": "Hledat"
+  }
+}
