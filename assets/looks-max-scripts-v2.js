@@ -21,6 +21,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     createMiniCart();
     console.log('[LM] After calling createMiniCart');
+
+    function sendKontaktEvent(e) {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'kontakt_click', {
+          event_category: 'navigation',
+          event_label: 'Kontakt'
+        });
+      }
+    }
+
+    // Найти все ссылки и кнопки с текстом 'Kontakt' (регистр не важен)
+    var kontaktLinks = Array.from(document.querySelectorAll('a, button')).filter(function(el) {
+      return el.textContent.trim().toLowerCase() === 'kontakt';
+    });
+    kontaktLinks.forEach(function(link) {
+      link.addEventListener('click', sendKontaktEvent);
+    });
 });
 
 console.log('[LM] After DOMContentLoaded declaration');
