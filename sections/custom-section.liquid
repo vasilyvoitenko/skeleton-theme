@@ -5,8 +5,13 @@
     </div>
   {% endif %}
 
-  <div class="custom-section__content">
-    {% content_for 'blocks' %}
+  {% assign block_count = section.blocks.size %}
+  <div class="custom-section__content{% if block_count == 2 %} custom-section__content--flex{% endif %}">
+    {% for block in section.blocks %}
+      <div class="custom-section__block">
+        {% render block %}
+      </div>
+    {% endfor %}
   </div>
 </div>
 
@@ -34,9 +39,45 @@
   .custom-section__content {
     display: grid;
     grid-template-columns: var(--content-grid);
+    padding-left: 24px;
+    padding-right: 24px;
   }
   .custom-section__content > * {
     grid-column: 2;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .custom-section__content--flex {
+    display: flex !important;
+    flex-direction: row;
+    gap: 32px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .custom-section__content--flex > .custom-section__block {
+    flex: 1 1 0;
+    min-width: 320px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  @media (max-width: 900px) {
+    .custom-section__content--flex {
+      flex-direction: column;
+      gap: 24px;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+    .custom-section__content--flex > .custom-section__block {
+      min-width: 0;
+    }
+    .custom-section__content {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
   }
 {% endstylesheet %}
 

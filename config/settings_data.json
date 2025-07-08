@@ -60,21 +60,6 @@
         "disabled": false,
         "settings": {}
       },
-      "13694372020385051692": {
-        "type": "shopify://apps/analyzely-google-analytics-4/blocks/analyzely/b3a3a697-6f42-4507-a5ae-c447f6da2c9d",
-        "disabled": false,
-        "settings": {}
-      },
-      "1092553828153919622": {
-        "type": "shopify://apps/analyzely-google-analytics-4/blocks/consent-banner/b3a3a697-6f42-4507-a5ae-c447f6da2c9d",
-        "disabled": false,
-        "settings": {}
-      },
-      "6478312753674380289": {
-        "type": "shopify://apps/gempages-builder/blocks/embed-gp-script-head/20b379d4-1b20-474c-a6ca-665c331919f3",
-        "disabled": true,
-        "settings": {}
-      },
       "2450789086036107872": {
         "type": "shopify://apps/wixpa-ga4/blocks/star_rating/c2e14746-d691-44e9-a249-a159be386c1b",
         "disabled": false,

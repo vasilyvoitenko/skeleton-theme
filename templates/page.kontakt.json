@@ -1,28 +1,9 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "main": {
-      "type": "routines-grid",
-      "disabled": true,
-      "custom_css": [
-        "h2 {font-size: 50px;}"
-      ],
-      "settings": {
-        "title": "{{ page.title }}"
-      }
-    },
-    "custom_section_nWWEx6": {
+    "custom_section_kontakt": {
       "type": "custom-section",
       "blocks": {
-        "ai_gen_block_a4c285e_MC3nht": {
+        "ai_gen_block_a4c285e_kontakt": {
           "type": "ai_gen_block_a4c285e",
           "settings": {
             "form_title": "Kontaktujte nás",
@@ -42,20 +23,20 @@
             "error_message": "Při odesílání došlo k chybě. Zkuste to prosím znovu.",
             "text_alignment": "left",
             "heading_size": 28,
-            "form_padding": 30,
-            "form_border_radius": 8,
-            "form_background": "#f8f8f8",
+            "form_padding": 0,
+            "form_border_radius": 0,
+            "form_background": "transparent",
             "text_color": "#333333",
-            "input_border_radius": 4,
-            "input_background": "#ffffff",
-            "input_text_color": "#333333",
-            "input_border_color": "#dddddd",
+            "input_border_radius": 6,
+            "input_background": "#fff",
+            "input_text_color": "#18182f",
+            "input_border_color": "#dadada",
             "button_alignment": "flex-start",
-            "button_width": 200,
-            "button_border_radius": 4,
-            "button_background": "#000f9f",
-            "button_hover_background": "#000000",
-            "button_text_color": "#ffffff",
+            "button_width": 220,
+            "button_border_radius": 8,
+            "button_background": "#7c3aed",
+            "button_hover_background": "#a78bfa",
+            "button_text_color": "#fff",
             "success_background": "#e8f5e9",
             "success_text_color": "#2e7d32",
             "error_background": "#ffebee",
@@ -63,14 +44,14 @@
           },
           "blocks": {}
         },
-        "ai_gen_block_47ca174_yHQKax": {
+        "ai_gen_block_47ca174_kontakt": {
           "type": "ai_gen_block_47ca174",
           "name": "Contact Information",
           "settings": {
             "heading": "",
             "layout": "row",
             "show_phone": false,
-            "phone": "(123) 456-7890",
+            "phone": "",
             "phone_link": true,
             "show_email": true,
             "email": "looks.max.you@gmail.com",
@@ -80,16 +61,16 @@
             "map_url": "",
             "show_hours": true,
             "hours": "Po-Ne: 9:00 – 17:00",
-            "show_custom": true,
+            "show_custom": false,
             "custom_label": "",
             "custom_link": "",
-            "background_color": "#f8f8f8",
+            "background_color": "transparent",
             "text_color": "#333333",
-            "icon_color": "#000f9f",
-            "link_color": "#000f9f",
-            "link_hover_color": "#000000",
-            "padding": 30,
-            "border_radius": 8,
+            "icon_color": "#7c3aed",
+            "link_color": "#7c3aed",
+            "link_hover_color": "#a78bfa",
+            "padding": 0,
+            "border_radius": 0,
             "spacing": 15,
             "icon_size": 24,
             "heading_size": 24,
@@ -100,15 +81,14 @@
         }
       },
       "block_order": [
-        "ai_gen_block_a4c285e_MC3nht",
-        "ai_gen_block_47ca174_yHQKax"
+        "ai_gen_block_47ca174_kontakt",
+        "ai_gen_block_a4c285e_kontakt"
       ],
-      "name": "t:general.custom_section",
+      "name": "Kontakt Custom Section",
       "settings": {}
     }
   },
   "order": [
-    "main",
-    "custom_section_nWWEx6"
+    "custom_section_kontakt"
   ]
-}
+} 
